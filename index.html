@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IA na Sala dos Professores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     HEADER / NAVEGAÇÃO
+════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo">IA · Professores</div>
+
+    <nav id="mainNav">
+      <button class="nav-btn active" onclick="showPage('visao',this)">Visão geral</button>
+      <button class="nav-btn" onclick="showPage('modulos',this)">Módulos</button>
+      <button class="nav-btn" onclick="showPage('prompts',this)">50+ Prompts</button>
+      <button class="nav-btn" onclick="showPage('desafio',this)">Desafio 5 Dias</button>
+    </nav>
+
+    <!-- Mobile fallback -->
+    <select class="mobile-select" onchange="showPageSelect(this.value)">
+      <option value="visao">Visão geral</option>
+      <option value="modulos">Módulos</option>
+      <option value="prompts">Prompts</option>
+      <option value="desafio">Desafio</option>
+    </select>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════
+       PÁGINA: VISÃO GERAL
+  ════════════════════════════════ -->
+  <div class="page active" id="page-visao">
+
+    <div class="hero fade-in">
+      <div class="hero-eyebrow"><span>✦</span> CURSO COMPLETO · EDUCAÇÃO BÁSICA</div>
+      <h1>IA na sala dos<br>professores</h1>
+      <p>Um curso prático e direto ao ponto. Sem jargões, sem complicação. Você vai sair daqui com ferramentas reais para usar já amanhã.</p>
+      <div class="hero-promise">
+        <div class="hero-promise-icon">🎯</div>
+        <p>Reduza drasticamente o tempo de planejamento, criação de atividades e correção usando IA — mesmo que você nunca tenha usado antes.</p>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card fade-in">
+        <div class="stat-num glow-accent">70%</div>
+        <div class="stat-label">menos tempo preparando aulas</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num glow-teal">50+</div>
+        <div class="stat-label">prompts prontos para copiar</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num glow-coral">6</div>
+        <div class="stat-label">módulos 100% práticos</div>
+      </div>
+      <div class="stat-card fade-in">
+        <div class="stat-num glow-yellow">5</div>
+        <div class="stat-label">dias para ter um sistema pronto</div>
+      </div>
+    </div>
+
+    <div class="section-title">Como funciona</div>
+    <div class="section-sub">Cada módulo é curto, prático e gera resultado no mesmo dia.</div>
+
+    <div class="overview-grid">
+      <div class="ov-card" onclick="showPage('modulos', document.querySelectorAll('.nav-btn')[1])">
+        <div class="ov-card-icon">📅</div>
+        <div class="ov-card-title">6 Módulos práticos</div>
+        <div class="ov-card-text">Planejamento, atividades, provas, correção, engajamento e kit completo. Cada módulo tem aulas curtas, exemplos reais e uma atividade prática.</div>
+        <div class="ov-card-link">Explorar módulos →</div>
+      </div>
+      <div class="ov-card" onclick="showPage('prompts', document.querySelectorAll('.nav-btn')[2])">
+        <div class="ov-card-icon">📋</div>
+        <div class="ov-card-title">50+ Prompts prontos</div>
+        <div class="ov-card-text">Organizados por categoria. Clique para copiar e cole direto no ChatGPT, Gemini ou Claude. Pronto para usar em segundos.</div>
+        <div class="ov-card-link">Ver prompts →</div>
+      </div>
+      <div class="ov-card" onclick="showPage('desafio', document.querySelectorAll('.nav-btn')[3])">
+        <div class="ov-card-icon">🔥</div>
+        <div class="ov-card-title">Desafio 5 dias</div>
+        <div class="ov-card-text">Um sistema completo em 5 dias. Uma missão por dia, 30-45 minutos. Ao final você tem tudo organizado e funcionando.</div>
+        <div class="ov-card-link">Aceitar desafio →</div>
+      </div>
+      <div class="ov-card" onclick="openModal('modal-como')">
+        <div class="ov-card-icon">💡</div>
+        <div class="ov-card-title">Qual IA usar?</div>
+        <div class="ov-card-text">ChatGPT, Gemini, Claude… são todos gratuitos e funcionam no celular. Clique para entender a diferença e qual usar para cada situação.</div>
+        <div class="ov-card-link">Ver comparativo →</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem">
+      <div class="section-title">O que você vai ter ao final</div>
+      <div class="overview-grid">
+        <div class="ov-card" style="cursor:default">
+          <div class="ov-card-icon">📁</div>
+          <div class="ov-card-title">Kit pessoal de prompts</div>
+          <div class="ov-card-text">Uma pasta organizada com todos os prompts que funcionam para a SUA disciplina, turma e realidade.</div>
+        </div>
+        <div class="ov-card" style="cursor:default">
+          <div class="ov-card-icon">🔄</div>
+          <div class="ov-card-title">Modelos reutilizáveis</div>
+          <div class="ov-card-text">Planos de aula, atividades e avaliações prontos para adaptar e usar toda semana sem partir do zero.</div>
+        </div>
+        <div class="ov-card" style="cursor:default">
+          <div class="ov-card-icon">⚡</div>
+          <div class="ov-card-title">Sistema de correção</div>
+          <div class="ov-card-text">Um fluxo de feedback que economiza horas por semana — especialmente para redações e textos.</div>
+        </div>
+        <div class="ov-card" style="cursor:default">
+          <div class="ov-card-icon">🚀</div>
+          <div class="ov-card-title">Confiança real</div>
+          <div class="ov-card-text">Você vai terminar sabendo usar IA no dia a dia, de forma ética e consciente, sem medo de errar.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /page-visao -->
+
+
+  <!-- ═══════════════════════════════
+       PÁGINA: MÓDULOS
+  ════════════════════════════════ -->
+  <div class="page" id="page-modulos">
+    <div class="section-title">Os 6 Módulos</div>
+    <div class="section-sub">Clique em qualquer módulo para expandir o conteúdo completo.</div>
+
+    <div class="accordion" id="accordion">
+
+      <!-- ── MÓDULO 1 ── -->
+      <div class="acc-item" data-module="1">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(124,111,255,0.12)">🚀</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 1</div>
+            <div class="acc-title">Começando sem complicação</div>
+            <div class="acc-sub">Mostre que é simples e possível — hoje mesmo</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do">
+              <div class="callout-icon">✅</div>
+              <div class="callout-content">
+                <div class="callout-label">Objetivo</div>
+                <div class="callout-text">Ao final deste módulo você vai fazer seu primeiro pedido para a IA e obter algo útil para usar na sua aula — hoje mesmo.</div>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem;font-size:13px;font-weight:600;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem">Aulas</div>
+            <div class="lesson-grid">
+              <div class="lesson">
+                <div class="lesson-num">1</div>
+                <div class="lesson-content">
+                  <div class="lesson-title">
+                    O que é IA e como ela funciona
+                    <span class="tooltip-trigger" data-tooltip="IA = Inteligência Artificial. Um programa que aprende padrões e gera texto a partir deles.">(3 min)</span>
+                  </div>
+                  <div class="lesson-desc">A IA é como um estagiário muito rápido que sabe de tudo, mas precisa de instruções claras. Você manda um pedido (chamado "prompt"), ela responde. Use o ChatGPT, Gemini ou Claude — todos são gratuitos e funcionam pelo celular.</div>
+                </div>
+              </div>
+              <div class="lesson">
+                <div class="lesson-num">2</div>
+                <div class="lesson-content">
+                  <div class="lesson-title">Seu primeiro prompt — agora</div>
+                  <div class="lesson-desc">Abra qualquer ferramenta de IA e escreva: "Crie 5 perguntas de revisão sobre o tema [seu tema atual] para alunos do [ano/série]." Veja o que acontece. É isso. Você já usou IA.</div>
+                </div>
+              </div>
+              <div class="lesson">
+                <div class="lesson-num">3</div>
+                <div class="lesson-content">
+                  <div class="lesson-title">Como melhorar qualquer resposta</div>
+                  <div class="lesson-desc">Se a resposta não for boa, adicione detalhes: disciplina, ano escolar, contexto dos alunos, tom desejado. Quanto mais específico você for, melhor a resposta.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="before-after">
+              <div class="ba-card ba-before">
+                <div class="ba-label">❌ Antes</div>
+                <div class="ba-text">Pesquisa em vários sites, copia, adapta, formata. 40 minutos para ter 5 perguntas.</div>
+              </div>
+              <div class="ba-card ba-after">
+                <div class="ba-label">✅ Depois</div>
+                <div class="ba-text">Um prompt, 10 segundos, 5 perguntas prontas. Ajusta o que quiser em 5 minutos.</div>
+              </div>
+            </div>
+
+            <div class="callout callout-tip">
+              <div class="callout-icon">💡</div>
+              <div class="callout-content">
+                <div class="callout-label">Dica prática</div>
+                <div class="callout-text">Crie uma pasta no Google Drive chamada "Meus Prompts". Toda vez que um prompt funcionar bem, salve lá. Em uma semana você vai ter um kit personalizado.</div>
+              </div>
+            </div>
+
+            <div class="activity-box">
+              <h4>🎯 Atividade prática do módulo 1</h4>
+              <p>Escolha o próximo conteúdo que vai ensinar. Use o prompt abaixo, substituindo os colchetes. Salve a resposta e use na sua próxima aula.</p>
+            </div>
+            <div class="prompt-box">
+              <pre>Sou professor(a) de [disciplina] do [ano/série] do ensino [fundamental/médio].
+Meus alunos têm [característica, ex: dificuldade de concentração].
+Crie 5 perguntas de revisão sobre [tema] com linguagem
+acessível e um gabarito ao final.</pre>
+              <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /M1 -->
+
+      <!-- ── MÓDULO 2 ── -->
+      <div class="acc-item" data-module="2">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(78,205,196,0.12)">📅</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 2</div>
+            <div class="acc-title">Planejamento em minutos</div>
+            <div class="acc-sub">Crie planos de aula completos sem enrolação</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do"><div class="callout-icon">✅</div><div class="callout-content"><div class="callout-label">Objetivo</div><div class="callout-text">Criar um plano de aula completo, adequado ao seu contexto, em menos de 10 minutos — sem partir do zero.</div></div></div>
+            <div class="lesson-grid">
+              <div class="lesson"><div class="lesson-num">1</div><div class="lesson-content"><div class="lesson-title">A estrutura de um bom prompt de plano de aula</div><div class="lesson-desc">Informe: disciplina + ano + tema + duração + recursos disponíveis + objetivo. Com esses 6 elementos, a IA gera um plano muito mais útil.</div></div></div>
+              <div class="lesson"><div class="lesson-num">2</div><div class="lesson-content"><div class="lesson-title">Plano de aula em etapas</div><div class="lesson-desc">Primeiro peça a estrutura (introdução, desenvolvimento, fechamento). Depois peça para detalhar cada parte. Isso dá mais controle e qualidade.</div></div></div>
+              <div class="lesson"><div class="lesson-num">3</div><div class="lesson-content"><div class="lesson-title">Adaptando para turmas difíceis</div><div class="lesson-desc">Diga para a IA o contexto real: "minha turma é agitada", "tenho alunos com dislexia", "não tenho projetor". A IA adapta o plano para sua realidade.</div></div></div>
+              <div class="lesson"><div class="lesson-num">4</div><div class="lesson-content"><div class="lesson-title">Sequência didática de uma semana</div><div class="lesson-desc">Você pode pedir para a IA planejar 5 aulas de uma vez, com progressão de dificuldade. Economiza horas de domingo.</div></div></div>
+            </div>
+            <div class="before-after">
+              <div class="ba-card ba-before"><div class="ba-label">❌ Antes</div><div class="ba-text">Domingo à noite preparando 5 planos de aula. 3 a 4 horas de trabalho.</div></div>
+              <div class="ba-card ba-after"><div class="ba-label">✅ Depois</div><div class="ba-text">1 hora para revisar e ajustar 5 planos que a IA gerou. Sobra tempo para o descanso.</div></div>
+            </div>
+            <div class="callout callout-warn"><div class="callout-icon">⚠️</div><div class="callout-content"><div class="callout-label">Evite isso</div><div class="callout-text">Não use o plano gerado pela IA sem ler. Sempre revise se a progressão faz sentido e se está alinhado com o currículo da sua escola.</div></div></div>
+            <div class="activity-box"><h4>🎯 Atividade prática do módulo 2</h4><p>Use o prompt abaixo para criar seu próximo plano de aula. Adapte 2 coisas que não se encaixam na sua realidade. Isso treina o olhar crítico.</p></div>
+            <div class="prompt-box">
+              <pre>Crie um plano de aula completo:
+- Disciplina: [nome]
+- Ano/série: [ex: 7º ano EF]
+- Tema: [tema da aula]
+- Duração: [ex: 50 minutos]
+- Recursos: [ex: lousa, caderno, sem projetor]
+- Objetivo: [o que os alunos devem aprender]
+- Contexto: [ex: turma agitada, 30 alunos]
+
+Estruture em: aquecimento (5 min), desenvolvimento
+(35 min) e fechamento (10 min). Inclua forma de
+verificar se os alunos aprenderam.</pre>
+              <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /M2 -->
+
+      <!-- ── MÓDULO 3 ── -->
+      <div class="acc-item" data-module="3">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(255,230,109,0.12)">📝</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 3</div>
+            <div class="acc-title">Atividades e provas automáticas</div>
+            <div class="acc-sub">Gere conteúdo avaliativo em minutos</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do"><div class="callout-icon">✅</div><div class="callout-content"><div class="callout-label">Objetivo</div><div class="callout-text">Criar atividades variadas, provas completas e listas de exercícios com gabarito sem gastar horas nisso.</div></div></div>
+            <div class="lesson-grid">
+              <div class="lesson"><div class="lesson-num">1</div><div class="lesson-content"><div class="lesson-title">Tipos de atividade que a IA cria em segundos</div><div class="lesson-desc">Múltipla escolha, verdadeiro/falso, dissertativas, completar lacunas, relacionar colunas, cruzadinhas, estudos de caso, desafios e muito mais.</div></div></div>
+              <div class="lesson"><div class="lesson-num">2</div><div class="lesson-content"><div class="lesson-title">Prova com gabarito e rubrica de correção</div><div class="lesson-desc">Além das questões, peça o gabarito comentado e uma rubrica (critérios de pontuação). Isso acelera a correção e torna o feedback mais justo.</div></div></div>
+              <div class="lesson"><div class="lesson-num">3</div><div class="lesson-content"><div class="lesson-title">Diferenciação: atividades para diferentes níveis</div><div class="lesson-desc">Peça versões fácil, médio e difícil do mesmo exercício. Ideal para turmas heterogêneas. A IA adapta vocabulário e complexidade automaticamente.</div></div></div>
+              <div class="lesson"><div class="lesson-num">4</div><div class="lesson-content"><div class="lesson-title">Contextualizando para a realidade dos alunos</div><div class="lesson-desc">Diga à IA o contexto dos seus alunos. Exemplo: "use exemplos do nordeste" ou "relacione com futebol e redes sociais". O engajamento melhora muito.</div></div></div>
+            </div>
+            <div class="before-after">
+              <div class="ba-card ba-before"><div class="ba-label">❌ Antes</div><div class="ba-text">Montar uma prova do zero: 2 a 3 horas. Depois ainda digitar o gabarito separado.</div></div>
+              <div class="ba-card ba-after"><div class="ba-label">✅ Depois</div><div class="ba-text">Prova com 10 questões + gabarito + rubrica em 15 minutos. Revisão em mais 10.</div></div>
+            </div>
+            <div class="activity-box"><h4>🎯 Atividade prática do módulo 3</h4><p>Crie agora uma atividade para a sua próxima aula usando o prompt abaixo. Depois crie uma versão mais fácil para alunos com dificuldade.</p></div>
+            <div class="prompt-box">
+              <pre>Crie uma atividade avaliativa sobre [tema] para [ano/série]:
+- 5 questões de múltipla escolha (4 alternativas cada)
+- 3 questões dissertativas curtas
+- Nível: [fácil / médio / difícil]
+- Contexto: [situações do dia a dia]
+
+Ao final: gabarito comentado e rubrica de correção.</pre>
+              <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /M3 -->
+
+      <!-- ── MÓDULO 4 ── -->
+      <div class="acc-item" data-module="4">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(255,107,107,0.12)">✔️</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 4</div>
+            <div class="acc-title">Correção e feedback com IA</div>
+            <div class="acc-sub">O módulo que vai salvar seus fins de semana</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do"><div class="callout-icon">✅</div><div class="callout-content"><div class="callout-label">Objetivo</div><div class="callout-text">Usar a IA para acelerar a correção de textos, redações e atividades dissertativas com feedback de qualidade.</div></div></div>
+            <div class="lesson-grid">
+              <div class="lesson"><div class="lesson-num">1</div><div class="lesson-content"><div class="lesson-title">Correção de redação com critérios específicos</div><div class="lesson-desc">Cole o texto do aluno e peça avaliação por critérios (coesão, coerência, gramática). A IA aponta pontos positivos e sugestões com linguagem adequada para o aluno.</div></div></div>
+              <div class="lesson"><div class="lesson-num">2</div><div class="lesson-content"><div class="lesson-title">Feedback personalizado e encorajador</div><div class="lesson-desc">Peça que o feedback seja sempre encorajador, apontando primeiro o que o aluno fez bem. Isso mantém a motivação e respeita diferentes ritmos.</div></div></div>
+              <div class="lesson"><div class="lesson-num">3</div><div class="lesson-content"><div class="lesson-title">Gabarito automático para questões objetivas</div><div class="lesson-desc">Cole as respostas dos alunos junto com o gabarito e peça para a IA identificar erros e criar estatísticas rápidas de desempenho da turma.</div></div></div>
+              <div class="lesson"><div class="lesson-num">4</div><div class="lesson-content"><div class="lesson-title">Devolutiva coletiva — a mais eficiente</div><div class="lesson-desc">Cole 5 respostas e peça: "identifique os erros mais comuns e escreva uma devolutiva coletiva para a turma". Economiza muito tempo.</div></div></div>
+            </div>
+            <div class="before-after">
+              <div class="ba-card ba-before"><div class="ba-label">❌ Antes</div><div class="ba-text">30 redações para corrigir = fim de semana inteiro. Feedback genérico porque falta tempo.</div></div>
+              <div class="ba-card ba-after"><div class="ba-label">✅ Depois</div><div class="ba-text">A IA faz rascunho do feedback. Você revisa e personaliza. Economiza 60-70% do tempo.</div></div>
+            </div>
+            <div class="callout callout-warn"><div class="callout-icon">⚠️</div><div class="callout-content"><div class="callout-label">Evite isso</div><div class="callout-text">Nunca envie o feedback da IA sem ler antes. Você conhece seus alunos — ajuste o tom e os detalhes que a IA não sabe.</div></div></div>
+            <div class="activity-box"><h4>🎯 Atividade prática do módulo 4</h4><p>Pegue 3 textos reais de alunos que você precisa corrigir esta semana. Use o prompt abaixo para cada um e veja a diferença no tempo gasto.</p></div>
+            <div class="prompt-box">
+              <pre>Você é um assistente de correção pedagógica.
+Analise o texto abaixo de aluno(a) do [ano/série]
+sobre o tema "[tema]".
+
+Avalie: compreensão do tema, organização das ideias,
+uso da linguagem e criatividade/argumentação.
+
+Para cada critério:
+- O que o(a) aluno(a) fez bem (comece pelo positivo)
+- O que pode melhorar
+- Uma sugestão prática
+
+Use linguagem acessível e encorajadora.
+
+TEXTO DO ALUNO:
+[cole o texto aqui]</pre>
+              <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /M4 -->
+
+      <!-- ── MÓDULO 5 ── -->
+      <div class="acc-item" data-module="5">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(168,230,207,0.12)">⚡</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 5</div>
+            <div class="acc-title">Engajamento rápido</div>
+            <div class="acc-sub">Aulas que prendem a atenção dos alunos</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do"><div class="callout-icon">✅</div><div class="callout-content"><div class="callout-label">Objetivo</div><div class="callout-text">Criar recursos criativos e dinâmicas que aumentam o interesse dos alunos — sem precisar ser designer ou artista.</div></div></div>
+            <div class="lesson-grid">
+              <div class="lesson"><div class="lesson-num">1</div><div class="lesson-content"><div class="lesson-title">Ganchos de aula irresistíveis</div><div class="lesson-desc">Peça à IA: "Crie 3 formas criativas de introduzir o tema [tema] para prender a atenção de adolescentes". Histórias, situações-problema, curiosidades.</div></div></div>
+              <div class="lesson"><div class="lesson-num">2</div><div class="lesson-content"><div class="lesson-title">Dinâmicas e jogos temáticos</div><div class="lesson-desc">A IA cria quizzes, gincanas, bingos educativos, caça ao tesouro conceitual — qualquer dinâmica que você descreva.</div></div></div>
+              <div class="lesson"><div class="lesson-num">3</div><div class="lesson-content"><div class="lesson-title">Relacionando ao mundo dos alunos</div><div class="lesson-desc">Peça: "Como posso relacionar [tema] com redes sociais / games / música?" A contextualização é o maior segredo do engajamento.</div></div></div>
+              <div class="lesson"><div class="lesson-num">4</div><div class="lesson-content"><div class="lesson-title">Storytelling pedagógico</div><div class="lesson-desc">Peça para a IA criar uma história curta que apresenta o conteúdo de forma narrativa. Histórias prendem a atenção melhor que qualquer slide.</div></div></div>
+            </div>
+            <div class="activity-box"><h4>🎯 Atividade prática do módulo 5</h4><p>Escolha uma aula onde os alunos ficam entediados. Use o prompt abaixo para criar um gancho diferente e teste na próxima semana.</p></div>
+            <div class="prompt-box">
+              <pre>Quero uma abertura envolvente para aula sobre [tema]
+para alunos do [ano/série].
+Interesses da turma: [ex: futebol, TikTok, games]
+Tempo disponível: [X minutos]
+
+Crie 3 opções:
+- Opção 1: uma história curta ou situação-problema
+- Opção 2: uma curiosidade surpreendente
+- Opção 3: uma pergunta desafiadora para debate
+
+Linguagem jovem, direta e animada.</pre>
+              <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div><!-- /M5 -->
+
+      <!-- ── MÓDULO 6 ── -->
+      <div class="acc-item" data-module="6">
+        <div class="acc-header" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:rgba(255,200,100,0.12)">🎁</div>
+          <div class="acc-meta">
+            <div class="acc-eyebrow">Módulo 6</div>
+            <div class="acc-title">Kit pronto — use agora</div>
+            <div class="acc-sub">Modelos que você nunca mais vai criar do zero</div>
+          </div>
+          <div class="acc-arrow">▼</div>
+        </div>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <div class="callout callout-do"><div class="callout-icon">✅</div><div class="callout-content"><div class="callout-label">Objetivo</div><div class="callout-text">Ter em mãos modelos prontos e reutilizáveis para todas as situações recorrentes da sua rotina de professor.</div></div></div>
+            <div class="lesson-grid">
+              <div class="lesson"><div class="lesson-num">1</div><div class="lesson-content"><div class="lesson-title">Comunicado para pais e responsáveis</div><div class="lesson-desc">Peça: "Escreva um comunicado educado sobre [situação]." Economiza 15 min de cada comunicado.</div></div></div>
+              <div class="lesson"><div class="lesson-num">2</div><div class="lesson-content"><div class="lesson-title">Relatório individual de aluno</div><div class="lesson-desc">Descreva o aluno brevemente e peça um relatório pedagógico. A IA organiza, dá tom profissional e cobre aspectos que você pode ter esquecido.</div></div></div>
+              <div class="lesson"><div class="lesson-num">3</div><div class="lesson-content"><div class="lesson-title">Roteiro de reunião de pais</div><div class="lesson-desc">Informe os pontos que quer abordar e peça um roteiro organizado com tempo estimado para cada parte.</div></div></div>
+              <div class="lesson"><div class="lesson-num">4</div><div class="lesson-content"><div class="lesson-title">Carta de apresentação do professor</div><div class="lesson-desc">Para início de ano: uma carta de apresentação calorosa e profissional para alunos ou pais.</div></div></div>
+            </div>
+            <div class="callout callout-tip"><div class="callout-icon">💡</div><div class="callout-content"><div class="callout-label">Dica de ouro</div><div class="callout-text">Crie um "banco de situações" no Google Docs. Para cada situação recorrente, salve um prompt que funciona. Na próxima vez é copiar, colar e adaptar.</div></div></div>
+            <div class="activity-box"><h4>🎯 Atividade prática do módulo 6</h4><p>Pense em 3 tarefas recorrentes que te tomam tempo toda semana. Crie um prompt para cada uma e salve no seu banco pessoal.</p></div>
+          </div>
+        </div>
+      </div><!-- /M6 -->
+
+    </div><!-- /accordion -->
+  </div><!-- /page-modulos -->
+
+
+  <!-- ═══════════════════════════════
+       PÁGINA: PROMPTS
+  ════════════════════════════════ -->
+  <div class="page" id="page-prompts">
+    <div class="section-title">50+ Prompts prontos</div>
+    <div class="section-sub">Clique em qualquer prompt para copiar. Substitua o que está entre colchetes pela sua situação real.</div>
+
+    <div class="prompt-filter" id="promptFilter">
+      <button class="filter-btn active" onclick="filterPrompts('todos',this)">Todos</button>
+      <button class="filter-btn" onclick="filterPrompts('planejamento',this)">📅 Planejamento</button>
+      <button class="filter-btn" onclick="filterPrompts('atividades',this)">📝 Atividades</button>
+      <button class="filter-btn" onclick="filterPrompts('provas',this)">📊 Provas</button>
+      <button class="filter-btn" onclick="filterPrompts('correcao',this)">✔️ Correção</button>
+      <button class="filter-btn" onclick="filterPrompts('engajamento',this)">⚡ Engajamento</button>
+      <button class="filter-btn" onclick="filterPrompts('comunicacao',this)">📧 Comunicação</button>
+    </div>
+
+    <!-- Cards rendered by app.js -->
+    <div id="promptsContainer"></div>
+  </div><!-- /page-prompts -->
+
+
+  <!-- ═══════════════════════════════
+       PÁGINA: DESAFIO 5 DIAS
+  ════════════════════════════════ -->
+  <div class="page" id="page-desafio">
+    <div class="section-title">🔥 Desafio 5 Dias</div>
+    <div class="section-sub">5 dias, 5 missões. Reserve 30-45 minutos por dia. Ao final você tem um sistema completo funcionando.</div>
+
+    <!-- Day selector pills -->
+    <div class="days-slider">
+      <div class="day-pill active" onclick="showDay(1,this)" style="border-top:2px solid #7C6FFF">
+        <div class="day-num glow-accent">1</div>
+        <div class="day-name">Planejamento</div>
+        <div class="day-mini">Semana inteira pronta</div>
+      </div>
+      <div class="day-pill" onclick="showDay(2,this)" style="border-top:2px solid #4ECDC4">
+        <div class="day-num glow-teal">2</div>
+        <div class="day-name">Atividade</div>
+        <div class="day-mini">Com gabarito e rubrica</div>
+      </div>
+      <div class="day-pill" onclick="showDay(3,this)" style="border-top:2px solid #FFE66D">
+        <div class="day-num glow-yellow">3</div>
+        <div class="day-name">Avaliação</div>
+        <div class="day-mini">Prova ou simulado</div>
+      </div>
+      <div class="day-pill" onclick="showDay(4,this)" style="border-top:2px solid #FF6B6B">
+        <div class="day-num glow-coral">4</div>
+        <div class="day-name">Correção</div>
+        <div class="day-mini">Feedback real</div>
+      </div>
+      <div class="day-pill" onclick="showDay(5,this)" style="border-top:2px solid #A8E6CF">
+        <div class="day-num glow-green">5</div>
+        <div class="day-name">Sistema</div>
+        <div class="day-mini">Kit pessoal pronto</div>
+      </div>
+    </div>
+
+    <div class="day-content-wrap" id="dayContentWrap">
+
+      <!-- DIA 1 -->
+      <div class="day-content active" id="day-1">
+        <div class="day-card-header">
+          <div class="day-badge" style="background:rgba(124,111,255,0.12);color:var(--accent)">1</div>
+          <div>
+            <div class="day-card-title">Planejamento</div>
+            <div class="day-card-sub">Missão: planejamento da semana inteira em 1 hora</div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="carousel-day1">
+            <div class="carousel-slide"><div class="carousel-slide-title">🎯 O que você vai fazer</div><div class="carousel-slide-text">Criar planos para todas as aulas da próxima semana usando a IA. Depois ajustar o que não encaixar na sua realidade.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">⏱️ Tempo estimado</div><div class="carousel-slide-text">45-60 minutos no total. Isso é menos do que você levaria fazendo apenas 2 planos manualmente.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">📁 Antes de começar</div><div class="carousel-slide-text">Tenha em mãos: sua grade de aulas da semana, os temas que precisa cobrir e os recursos disponíveis na escola.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">✅ Resultado esperado</div><div class="carousel-slide-text">Semana planejada, salva e pronta. Você acabou de recuperar seu domingo.</div></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day1',-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day1',1)">→</button>
+            <div class="carousel-dots" id="dots-carousel-day1"></div>
+          </div>
+        </div>
+        <div class="prompt-box">
+          <pre>Crie uma sequência didática para a semana completa:
+- Disciplina: [nome]
+- Ano/série: [ex: 8º ano]
+- Temas desta semana: [lista os temas]
+- Aulas: [ex: 6 aulas de 50 min, seg/qua/sex]
+- Recursos: [o que você tem]
+
+Para cada aula: objetivo, atividade principal,
+material necessário e forma de verificar aprendizagem.</pre>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+        </div>
+      </div><!-- /day-1 -->
+
+      <!-- DIA 2 -->
+      <div class="day-content" id="day-2">
+        <div class="day-card-header">
+          <div class="day-badge" style="background:rgba(78,205,196,0.12);color:var(--accent3)">2</div>
+          <div>
+            <div class="day-card-title">Atividade</div>
+            <div class="day-card-sub">Missão: criar sua primeira atividade completa com gabarito</div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="carousel-day2">
+            <div class="carousel-slide"><div class="carousel-slide-title">🎯 O que você vai fazer</div><div class="carousel-slide-text">Escolher o tema da próxima atividade avaliativa e criar usando a IA com diferentes tipos de questão.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">⏱️ Tempo estimado</div><div class="carousel-slide-text">30 minutos para criar + 15 para revisar e personalizar. Salve como modelo para usar com outros temas.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">💡 Dica</div><div class="carousel-slide-text">Peça também uma versão simplificada da atividade para alunos com dificuldade. A IA adapta em segundos.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">✅ Resultado esperado</div><div class="carousel-slide-text">Uma atividade completa para usar já, com gabarito comentado e rubrica de correção.</div></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day2',-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day2',1)">→</button>
+            <div class="carousel-dots" id="dots-carousel-day2"></div>
+          </div>
+        </div>
+        <div class="prompt-box">
+          <pre>Crie uma atividade avaliativa completa:
+- Tema: [tema] · Ano/série: [ano]
+- 5 questões objetivas + 3 dissertativas
+- Valor total: 10 pontos (distribua os pontos)
+- Contextualize com situações do dia a dia
+
+Inclua: gabarito comentado, rubrica de correção
+e tempo sugerido para realização.</pre>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+        </div>
+      </div><!-- /day-2 -->
+
+      <!-- DIA 3 -->
+      <div class="day-content" id="day-3">
+        <div class="day-card-header">
+          <div class="day-badge" style="background:rgba(255,230,109,0.12);color:var(--accent4)">3</div>
+          <div>
+            <div class="day-card-title">Avaliação</div>
+            <div class="day-card-sub">Missão: prova ou simulado pronto para aplicar</div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="carousel-day3">
+            <div class="carousel-slide"><div class="carousel-slide-title">🎯 O que você vai fazer</div><div class="carousel-slide-text">Criar a prova do próximo bimestre ou um simulado de revisão com questões contextualizadas.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">❌ Antes</div><div class="carousel-slide-text">Buscar questões em livros e sites, digitar, formatar, revisar. 3-4 horas de trabalho de domingo.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">✅ Depois</div><div class="carousel-slide-text">Prova pronta em 20 minutos. Mais 15 para revisar e personalizar. Total: 35 minutos.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">💡 Dica</div><div class="carousel-slide-text">Peça em blocos: primeiro as questões objetivas, depois as dissertativas. Fica mais fácil revisar.</div></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day3',-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day3',1)">→</button>
+            <div class="carousel-dots" id="dots-carousel-day3"></div>
+          </div>
+        </div>
+      </div><!-- /day-3 -->
+
+      <!-- DIA 4 -->
+      <div class="day-content" id="day-4">
+        <div class="day-card-header">
+          <div class="day-badge" style="background:rgba(255,107,107,0.12);color:var(--accent2)">4</div>
+          <div>
+            <div class="day-card-title">Correção</div>
+            <div class="day-card-sub">Missão: dar feedback de verdade sem gastar horas</div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="carousel-day4">
+            <div class="carousel-slide"><div class="carousel-slide-title">🎯 O que você vai fazer</div><div class="carousel-slide-text">Pegar 3 textos ou respostas reais dos seus alunos e usar a IA para criar um rascunho de feedback para cada um.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">📏 Medir a diferença</div><div class="carousel-slide-text">Anote quanto tempo levaria manualmente vs. com a IA. Essa prova concreta vai motivar você a continuar.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">⚠️ Lembre-se</div><div class="carousel-slide-text">Sempre leia o feedback antes de enviar ao aluno. Você conhece o contexto que a IA não sabe.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">✅ Resultado esperado</div><div class="carousel-slide-text">Feedback real entregue. Tempo mensurado. Prova concreta do quanto a IA te ajuda.</div></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day4',-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day4',1)">→</button>
+            <div class="carousel-dots" id="dots-carousel-day4"></div>
+          </div>
+        </div>
+      </div><!-- /day-4 -->
+
+      <!-- DIA 5 -->
+      <div class="day-content" id="day-5">
+        <div class="day-card-header">
+          <div class="day-badge" style="background:rgba(168,230,207,0.12);color:var(--accent5)">5</div>
+          <div>
+            <div class="day-card-title">Sistema completo</div>
+            <div class="day-card-sub">Missão: montar seu kit pessoal de produtividade</div>
+          </div>
+        </div>
+        <div class="carousel-wrap">
+          <div class="carousel-track" id="carousel-day5">
+            <div class="carousel-slide"><div class="carousel-slide-title">📁 Organize seus prompts</div><div class="carousel-slide-text">Crie uma pasta no Google Drive: "Kit IA — [seu nome]". Subpastas: Planejamento / Atividades / Provas / Correção / Comunicados.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">⭐ Crie seu prompt mestre</div><div class="carousel-slide-text">Um prompt com seu contexto permanente (disciplina, ano, escola, turma). Assim você não repete isso toda vez.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">🔄 Crie o hábito</div><div class="carousel-slide-text">Toda vez que um prompt funcionar bem, salve. Em 1 mês você vai ter um kit poderoso personalizado para você.</div></div>
+            <div class="carousel-slide"><div class="carousel-slide-title">🎉 Você chegou lá!</div><div class="carousel-slide-text">Um sistema de trabalho com IA. Materiais reutilizáveis. Economia real de tempo. Confiança para continuar.</div></div>
+          </div>
+          <div class="carousel-controls">
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day5',-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel('carousel-day5',1)">→</button>
+            <div class="carousel-dots" id="dots-carousel-day5"></div>
+          </div>
+        </div>
+        <div class="prompt-box">
+          <pre>[SEU PROMPT MESTRE — personalize e salve]
+
+Contexto permanente:
+- Sou professor(a) de [disciplina]
+- Atendo turmas de [anos/séries]
+- Escola [pública/particular] em [cidade]
+- Recursos: [o que você tem]
+- Perfil das turmas: [descreva]
+
+Com esse contexto, [complete com o que precisa hoje].</pre>
+          <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+        </div>
+        <div class="complete-box">
+          <div class="complete-emoji">🏆</div>
+          <div class="complete-title">Parabéns — você completou o desafio!</div>
+          <div class="complete-text">Você agora tem um sistema de trabalho com IA que vai economizar horas toda semana. Compartilhe com outros professores — quanto mais gente usar, melhor para os nossos alunos.</div>
+        </div>
+      </div><!-- /day-5 -->
+
+    </div><!-- /dayContentWrap -->
+  </div><!-- /page-desafio -->
+
+</main>
+
+
+<!-- ═══════════════════════════════
+     MODAL: Qual IA usar?
+════════════════════════════════ -->
+<div class="modal-overlay" id="modal-como" onclick="closeModalOutside(event,'modal-como')">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-como')">×</button>
+    <div class="modal-title">Qual IA usar?</div>
+    <div class="modal-sub">Comparativo rápido das principais ferramentas gratuitas</div>
+
+    <div style="display:grid;gap:10px">
+      <div class="lesson">
+        <div style="width:36px;height:36px;border-radius:9px;background:#10a37f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:white;flex-shrink:0">G</div>
+        <div class="lesson-content">
+          <div class="lesson-title">ChatGPT (OpenAI)</div>
+          <div class="lesson-desc">A mais popular. Gratuita com login. Ótima para textos longos, redações e planos de aula detalhados. Acesse: chat.openai.com</div>
+        </div>
+      </div>
+      <div class="lesson">
+        <div style="width:36px;height:36px;border-radius:9px;background:#4285f4;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:white;flex-shrink:0">G</div>
+        <div class="lesson-content">
+          <div class="lesson-title">Gemini (Google)</div>
+          <div class="lesson-desc">Integrado com o Google. Ótimo para quem usa Gmail e Drive. Acessa internet em tempo real. Acesse: gemini.google.com</div>
+        </div>
+      </div>
+      <div class="lesson">
+        <div style="width:36px;height:36px;border-radius:9px;background:#cc785c;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:white;flex-shrink:0">C</div>
+        <div class="lesson-content">
+          <div class="lesson-title">Claude (Anthropic)</div>
+          <div class="lesson-desc">Excelente para feedback pedagógico, textos cuidadosos e situações que exigem tom empático. Acesse: claude.ai</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-tip" style="margin-top:1rem">
+      <div class="callout-icon">💡</div>
+      <div class="callout-content">
+        <div class="callout-label">Dica</div>
+        <div class="callout-text">Todas são gratuitas para uso básico. Comece pelo ChatGPT ou Gemini, pois são os mais fáceis de acessar. Qualquer uma funciona bem para os prompts deste curso.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.25rem">
+      <div style="font-size:12px;font-weight:600;color:var(--text-dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:8px">Tempo economizado por semana</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label" style="font-size:12px">Planejamento</div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%;background:#7C6FFF" data-width="80%"></div></div>
+        <div style="font-size:12px;color:var(--text-muted);min-width:30px">~3h</div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label" style="font-size:12px">Correção</div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%;background:#4ECDC4" data-width="70%"></div></div>
+        <div style="font-size:12px;color:var(--text-muted);min-width:30px">~2h</div>
+      </div>
+      <div class="progress-bar-wrap">
+        <div class="progress-label" style="font-size:12px">Comunicados</div>
+        <div class="progress-track"><div class="progress-fill" style="width:0%;background:#FFE66D" data-width="60%"></div></div>
+        <div style="font-size:12px;color:var(--text-muted);min-width:30px">~1h</div>
+      </div>
+    </div>
+  </div>
+</div><!-- /modal-como -->
+
+<!-- JS carregado ao final do body -->
+<script src="app.js"></script>
+
+</body>
+</html>
